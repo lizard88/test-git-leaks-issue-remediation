@@ -4,7 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os"
 
+	"golang.org/x/crypto/ssh"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -52,4 +54,20 @@ func main() {
 	if err := rows.Err(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+
+// Funzione per caricare una chiave privata da un file.
+func loadPrivateKey(path string) (ssh.Signer, error) {
+	keyBytes, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("impossibile leggere la chiave privata: %v", err)
+	}
+
+	privateKey, err := ssh.ParsePrivateKey(keyBytes)
+	if err != nil {
+		return nil, fmt.Errorf("impossibile analizzare la chiave privata: %v", err)
+	}
+
+	return privateKey, nil
 }
