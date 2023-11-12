@@ -9,11 +9,14 @@ import (
 )
 
 func main() {
+	apikey := "45321234wefera123"
 	dbUsername := "username"
 	dbPassword := "user_password"
 	dbName := "dbname"
 	dbHost := "localhost"
 	dbPort := 3306
+
+	fmt.Printf("API key: %s\n",apikey)
 
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", dbUsername, dbPassword, dbHost, dbPort, dbName)
 
