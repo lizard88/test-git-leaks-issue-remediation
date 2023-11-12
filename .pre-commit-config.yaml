@@ -3,3 +3,6 @@ repos:
     rev: v8.16.1
     hooks:
       - id: gitleaks
+        name: Detect hardcoded secrets
+        description: Detect hardcoded secrets using Gitleaks
+        entry: gitleaks --config .config/lint/gitleaks.toml detect --verbose
