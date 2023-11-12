@@ -20,6 +20,8 @@ func main() {
 
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", dbUsername, dbPassword, dbHost, dbPort, dbName)
 
+	fmt.Printf("database connection string: %s\n",connectionString)
+
 	db, err := sql.Open("mysql", connectionString)
 	if err != nil {
 		log.Fatal(err)
